@@ -9,7 +9,7 @@ var provisionerAdapters = require('./provisioners');
 var statusParser = require('./parseStatus');
 
 var vagrant = (function(env, platform) {
-    var bin = platform === 'win32' ? 'vagrant' : 'vagrant.bat';
+    var bin = platform === 'win32' ? 'vagrant.bat' : 'vagrant';
     return env.VAGRANT_DIR ? path.join(env.VAGRANT_DIR, bin) : bin;
 })(process.env, process.platform);
 
