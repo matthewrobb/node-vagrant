@@ -10,7 +10,7 @@ module.exports = function(status_text){
 
     lines.pop();
 
-    var re = /^(\S+)\s+(\S+\s?\S*)+\s+\((\S+)\)$/;
+    var re = /^(\S+)\s+(\S+\s?\S*)+(?:\s+\((\S+)\))?$/;
 
     var statuses = {};
     lines.forEach(function(line) {
