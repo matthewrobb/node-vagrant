@@ -8,7 +8,10 @@ var fs = require('fs');
 var provisionerAdapters = require('./provisioners');
 var statusParser = require('./parseStatus');
 
-var vagrant = process.env.VAGRANT_DIR ? path.join(process.env.VAGRANT_DIR, 'vagrant') : 'vagrant';
+var vagrant = (function(env, platform) {
+    var bin = platform === 'win32' ? 'vagrant' : 'vagrant.bat';
+    return env.VAGRANT_DIR ? path.join(env.VAGRANT_DIR, bin) : bin;
+})(process.env, process.platform);
 
 var SSH_CONFIG_MATCHERS = {
     host: /Host (\S+)$/mi,
